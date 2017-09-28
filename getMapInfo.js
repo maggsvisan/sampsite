@@ -48,22 +48,39 @@ function initMap(data){
 
    var value1;
    var value2;
+   var type;
 
    // console.log(data);
     for(var k in data) {
         value1 = data[k].LAT;
         value2 = data[k].LON;
+        type = data[k].ID;
 
         //aqui quedaria poner un if que dependiendo el ID que tengas es la sticker que te toca:)
 
-        markers[k]=
+        if (type < 7){
+            markers[k]=
+            {   
+                //coords:{ lat: parseFloat(data[k].LAT), lon:parseFloat(data[k].LON)},
+                coords:{lat: parseFloat(value1),lng: parseFloat(value2)},
+                iconImage:'/images/truck.png',
+                content:'<h1> Camión </h1> <ul>list1</ul>'
+                
+            };
+        }
+
+        else {
+
+            markers[k]=
         {   
             //coords:{ lat: parseFloat(data[k].LAT), lon:parseFloat(data[k].LON)},
             coords:{lat: parseFloat(value1),lng: parseFloat(value2)},
-            iconImage:'/images/truck.png',
-            content:'<h1> Camión1 </h1> <ul>list1</ul>'
+            iconImage:'/images/man.png',
+            content:'<h1> Operador </h1> <ul>list1</ul>'
             
         };
+        }
+        
        console.log(markers[k]);
         //Array of markers
     }
